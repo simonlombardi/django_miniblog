@@ -1,0 +1,24 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Actualizar Opinion</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <h3>{{ review.product }}</h3>
+        </div>
+        <div class="form-group">
+            <h5>{{ review.date }}</h5>
+        </div>
+        <div class="form-group">
+            <label>Opinion</label>
+            <textarea name="opinion" class="form-control">{{ review.text }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Valoracion</label>
+            <input type="number" name="rating" step="1" min="1" max="10" class="form-control" value="{{ review.rating }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+{% endblock %}

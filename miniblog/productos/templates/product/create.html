@@ -1,0 +1,20 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Crear Producto</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="">Nombre</label>
+        {{ form.name }}
+        <label for="">Descripcion</label>
+        {{ form.description }}
+        <label for="">Precio</label>
+        {{ form.price }}
+        <label for="">Categoria</label>
+        {{ form.category }}
+        <label for="">Stock</label>
+        {{ form.stock }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock %}

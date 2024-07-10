@@ -1,0 +1,22 @@
+{% extends "home/base.html" %}
+{% block content %}
+<div class="container mt-3">
+    <h2>Detalles del Producto</h2>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{ review.product }}</h2>
+            <h3 class="card-text">{{ review.date }}</h3>
+            <p class="card-text">{{ review.author }}</p>
+            <p class="card-text">{{ review.text }}</p>
+            <p class="card-text">{{ review.date }}</p>
+            <a href="{% url 'review_list' %}" class="btn btn-secondary">Volver a la lista</a>
+            {% if user.is_authenticated and user.id == review.author.id or user.is_staff %}
+                {% if user.id == review.author.id %}
+                    <a href="{% url 'review_update' review.id %}" class="btn btn-success btn">Editar</a>
+                {% endif %}
+                <a href="{% url 'review_delete' review.id %}" class="btn btn-danger btn">Eliminar</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
